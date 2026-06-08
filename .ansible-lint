@@ -1,11 +1,34 @@
+# ansible-lint configuration for rhis-builder-azure-lz
 ---
-offline: false
+profile: production
 
 exclude_paths:
+  - .git/
   - .github/
+  - .vscode/
+  - .devcontainer/
+  - .claude/
+  - tests/
+  - .cache/
   - docs
   - mkdocs.yml
 
+skip_list:
+  - experimental
+  - role-name
+
 warn_list:
-  - name[template]
-  - run-once[play]
+  - no-changed-when
+  - command-instead-of-module
+  - risky-file-permissions
+  - var-naming[no-role-prefix]   # RHIS uses component-scoped prefixes — clean up incrementally
+  - name[template]               # repo-specific
+  - run-once[play]               # repo-specific
+
+enable_list:
+  - yaml
+  - fqcn
+  - fqcn-builtins
+
+offline: false
+verbosity: 1
