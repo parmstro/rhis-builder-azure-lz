@@ -6,3 +6,5 @@ rhisbuilder_vault.yml
 ansible.cfg
 
 
+.vscode/
+.claude/
